@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/RePassa-Donate-FF6D00?style=for-the-badge&logo=android&logoColor=white" />
 
-# 📱 RePassa
+# RePassa
 
 ### Donating has never been easier
 
@@ -40,9 +40,9 @@ Clothes, furniture, electronics, books... Items you no longer use can transform 
 <tr>
 <td width="50%" valign="top">
 
-### 📲 For donors
+### For donors
 
-1. **Register** your items with photos and description
+1. **Register** your items with description
 2. **Choose** the category and condition
 3. **Wait** for donation requests
 4. **Accept** and arrange the delivery
@@ -50,12 +50,12 @@ Clothes, furniture, electronics, books... Items you no longer use can transform 
 </td>
 <td width="50%" valign="top">
 
-### 🙏 For those in need
+### For those in need
 
 1. **Browse** available items
 2. **Filter** by city, category or neighborhood
 3. **Request** the item you need
-4. **Receive** and rate the donation
+4. **Receive** the donation
 
 </td>
 </tr>
@@ -73,10 +73,6 @@ Clothes, furniture, electronics, books... Items you no longer use can transform 
 <img src="https://img.shields.io/badge/Click_here_to_try_the_live_demo-FF6D00?style=for-the-badge&logo=vercel&logoColor=white&labelColor=FF6D00" />
 </a>
 
-<br/><br/>
-
-![RePassa Screenshot](https://via.placeholder.com/800x400/FF6D00/FFFFFF?text=RePassa+-+Donate+What+You+No+Longer+Use)
-
 </div>
 
 ---
@@ -89,19 +85,19 @@ Clothes, furniture, electronics, books... Items you no longer use can transform 
 <tr>
 <td width="33%" align="center">
 
-### 🔐 Authentication
+### Authentication
 Sign up and login with JWT
 
 </td>
 <td width="33%" align="center">
 
-### 📂 Categories
+### Categories
 Organize by item type
 
 </td>
 <td width="34%" align="center">
 
-### 📦 Items
+### Items
 Register and manage donations
 
 </td>
@@ -109,19 +105,19 @@ Register and manage donations
 <tr>
 <td align="center">
 
-### 🤝 Requests
+### Requests
 Request or accept donations
 
 </td>
 <td align="center">
 
-### 🏙️ Search
+### Search
 Filter by city and neighborhood
 
 </td>
 <td align="center">
 
-### ✅ Status
+### Status
 Track every donation
 
 </td>
@@ -135,7 +131,7 @@ Track every donation
 ## API Endpoints
 
 <details>
-<summary><b>🔐 Authentication</b></summary>
+<summary><b>Authentication</b></summary>
 
 | Method | Route | Description |
 |--------|-------|-------------|
@@ -145,7 +141,7 @@ Track every donation
 </details>
 
 <details>
-<summary><b>📂 Categories</b></summary>
+<summary><b>Categories</b></summary>
 
 | Method | Route | Description |
 |--------|-------|-------------|
@@ -158,7 +154,7 @@ Track every donation
 </details>
 
 <details>
-<summary><b>📦 Items</b></summary>
+<summary><b>Items</b></summary>
 
 | Method | Route | Description |
 |--------|-------|-------------|
@@ -175,7 +171,7 @@ Track every donation
 </details>
 
 <details>
-<summary><b>🤝 Donation Requests</b></summary>
+<summary><b>Donation Requests</b></summary>
 
 | Method | Route | Description |
 |--------|-------|-------------|
@@ -257,7 +253,7 @@ H2 Console: `http://localhost:8080/h2-console`
 | 1. Build Docker | `docker build -t repassa-backend .` |
 | 2. Run | `docker run -p 8080:8080 repassa-backend` |
 
-**Or** connect the repository to **Render** — deploy is automatic on every push.
+**Or** connect the repository to **Render** - deploy is automatic on every push.
 
 </div>
 
@@ -270,24 +266,24 @@ H2 Console: `http://localhost:8080/h2-console`
 ```
 src/main/java/com/repassa/backend/
 ├── RepassaApplication.java
-├── auth/               # 🔐 Authentication + JWT
+├── auth/                 Authentication + JWT
 │   ├── User.java
 │   ├── AuthService.java
 │   ├── JwtService.java
 │   └── AuthController.java
-├── category/           # 📂 Categories
+├── category/             Categories
 │   ├── Category.java
 │   ├── CategoryService.java
 │   └── CategoryController.java
-├── item/               # 📦 Donation items
+├── item/                 Donation items
 │   ├── Item.java
 │   ├── ItemService.java
 │   └── ItemController.java
-├── donationrequest/    # 🤝 Donation requests
+├── donationrequest/      Donation requests
 │   ├── DonationRequest.java
 │   ├── DonationRequestService.java
 │   └── DonationRequestController.java
-└── security/           # 🔒 JWT Security
+└── security/             JWT Security
     ├── SecurityConfig.java
     └── JwtAuthenticationFilter.java
 ```
@@ -298,7 +294,7 @@ src/main/java/com/repassa/backend/
 
 <div align="center">
 
-### Built with ❤️ by
+### Built with by
 
 **Jhonata Rusaffa**
 
@@ -307,6 +303,6 @@ src/main/java/com/repassa/backend/
 
 <br/>
 
-**RePassa** — Because every good thing deserves to be reused. ♻️
+**RePassa** - Because every good thing deserves to be reused.
 
 </div>

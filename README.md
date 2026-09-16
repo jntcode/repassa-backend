@@ -1,17 +1,20 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/RePassa-Doa%C3%A7%C3%A3o-00C853?style=for-the-badge&logo=android&logoColor=white" />
+<img src="https://img.shields.io/badge/RePassa-Donate-FF6D00?style=for-the-badge&logo=android&logoColor=white" />
 
 # 📱 RePassa
 
-### Doar nunca foi tao facil
+### Donating has never been easier
 
-Conectando quem quer **doar** com quem **precisa**.
+Connecting those who want to **donate** with those who **need**.
 
-Roupas, moveis, eletronicos, livros... Itens que voce nao usa mais podem transformar a vida de outra pessoa.
+Clothes, furniture, electronics, books... Items you no longer use can transform someone else's life.
 
 <br/>
 
+<a href="https://jntcode.github.io/repassa-backend/">
+<img src="https://img.shields.io/badge/Live_Demo-Try_It-FF6D00?style=for-the-badge&logo=vercel&logoColor=white" />
+</a>
 <a href="https://github.com/jntcode/repassa-backend">
 <img src="https://img.shields.io/badge/Backend-Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
 </a>
@@ -22,7 +25,7 @@ Roupas, moveis, eletronicos, livros... Itens que voce nao usa mais podem transfo
 <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
 </a>
 <a href="https://github.com/jntcode/repassa-backend">
-<img src="https://img.shields.io/badge/JWT-Seguran%C3%A7a-E91E63?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
+<img src="https://img.shields.io/badge/JWT-Security-E91E63?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
 </a>
 
 </div>
@@ -31,28 +34,28 @@ Roupas, moveis, eletronicos, livros... Itens que voce nao usa mais podem transfo
 
 <br/>
 
-## Como funciona
+## How it works
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 📲 Para quem quer doar
+### 📲 For donors
 
-1. **Cadastre** seus itens com fotos e descricao
-2. **Escolha** a categoria e condicao
-3. **Aguarde** pedidos de doacao
-4. **Aceite** e combine a entrega
+1. **Register** your items with photos and description
+2. **Choose** the category and condition
+3. **Wait** for donation requests
+4. **Accept** and arrange the delivery
 
 </td>
 <td width="50%" valign="top">
 
-### 🙏 Para quem precisa
+### 🙏 For those in need
 
-1. **Navegue** pelos itens disponiveis
-2. **Filtre** por cidade, categoria ou bairro
-3. **Solicite** o item que precisa
-4. **Receba** e avalie a doacao
+1. **Browse** available items
+2. **Filter** by city, category or neighborhood
+3. **Request** the item you need
+4. **Receive** and rate the donation
 
 </td>
 </tr>
@@ -66,84 +69,13 @@ Roupas, moveis, eletronicos, livros... Itens que voce nao usa mais podem transfo
 
 <div align="center">
 
-<table>
-<tr>
-<td>
+<a href="https://jntcode.github.io/repassa-backend/">
+<img src="https://img.shields.io/badge/Click_here_to_try_the_live_demo-FF6D00?style=for-the-badge&logo=vercel&logoColor=white&labelColor=FF6D00" />
+</a>
 
-```
-┌─────────────────────────┐
-│  ☰  RePassa      🔔 👤  │
-├─────────────────────────┤
-│                         │
-│  Ola, Maria! 👋         │
-│  Que tal doar hoje?     │
-│                         │
-│ ┌─────────────────────┐ │
-│ │ 🔍 Buscar item...   │ │
-│ └─────────────────────┘ │
-│                         │
-│  Categorias             │
-│  ┌───┐┌───┐┌───┐┌───┐  │
-│  │👕 ││📱 ││📚 ││🪑 │  │
-│  │Rou-││Elec││Liv-││Mó- │  │
-│  │pas ││trô ││ros ││vel │  │
-│  └───┘└───┘└───┘└───┘  │
-│                         │
-│  Itens Disponiveis      │
-│ ┌─────────────────────┐ │
-│ │ 👕 Camiseta Nike    │ │
-│ │ Bom estado | SP     │ │
-│ │ 📅 16/09            │ │
-│ └─────────────────────┘ │
-│ ┌─────────────────────┐ │
-│ │ 📚 Livro Didatico   │ │
-│ │ Novo | RJ           │ │
-│ │ 📅 15/09            │ │
-│ └─────────────────────┘ │
-│                         │
-│  🏠  📋  ➕  📩  👤     │
-│ Home Itens Novo Msg Perfil│
-└─────────────────────────┘
-```
+<br/><br/>
 
-</td>
-<td>
-
-```
-┌─────────────────────────┐
-│  ←  Meus Itens          │
-├─────────────────────────┤
-│                         │
-│ ┌─────────────────────┐ │
-│ │ 👕 Camiseta Nike    │ │
-│ │ Bom estado | SP     │ │
-│ │ ✅ Disponivel       │ │
-│ │    [Editar] [❌]    │ │
-│ └─────────────────────┘ │
-│ ┌─────────────────────┐ │
-│ │ 📚 Livro Algebra    │ │
-│ │ Usado | SP          │ │
-│ │ 🔄 2 pedidos        │ │
-│ │    [Ver pedidos]    │ │
-│ └─────────────────────┘ │
-│ ┌─────────────────────┐ │
-│ │ 🪑 Cadeira Escrit.  │ │
-│ │ Bom estado | SP     │ │
-│ │ ✅ Disponivel       │ │
-│ │    [Editar] [❌]    │ │
-│ └─────────────────────┘ │
-│                         │
-│  ┌─────────────────┐    │
-│  │   + Novo Item   │    │
-│  └─────────────────┘    │
-│                         │
-│  🏠  📋  ➕  📩  👤     │
-└─────────────────────────┘
-```
-
-</td>
-</tr>
-</table>
+![RePassa Screenshot](https://via.placeholder.com/800x400/FF6D00/FFFFFF?text=RePassa+-+Donate+What+You+No+Longer+Use)
 
 </div>
 
@@ -151,46 +83,46 @@ Roupas, moveis, eletronicos, livros... Itens que voce nao usa mais podem transfo
 
 <br/>
 
-## Funcionalidades
+## Features
 
 <table>
 <tr>
 <td width="33%" align="center">
 
-### 🔐 Auth
-Cadastro e login com JWT
+### 🔐 Authentication
+Sign up and login with JWT
 
 </td>
 <td width="33%" align="center">
 
-### 📂 Categorias
-Organize por tipo de item
+### 📂 Categories
+Organize by item type
 
 </td>
 <td width="34%" align="center">
 
-### 📦 Itens
-Cadastre e gerencie doacoes
+### 📦 Items
+Register and manage donations
 
 </td>
 </tr>
 <tr>
 <td align="center">
 
-### 🤝 Pedidos
-Solicite ou aceite doacoes
+### 🤝 Requests
+Request or accept donations
 
 </td>
 <td align="center">
 
-### 🏙️ Busca
-Filtre por cidade e bairro
+### 🏙️ Search
+Filter by city and neighborhood
 
 </td>
 <td align="center">
 
 ### ✅ Status
-Acompanhe cada doacao
+Track every donation
 
 </td>
 </tr>
@@ -203,58 +135,58 @@ Acompanhe cada doacao
 ## API Endpoints
 
 <details>
-<summary><b>🔐 Autenticacao</b></summary>
+<summary><b>🔐 Authentication</b></summary>
 
-| Metodo | Rota | Descricao |
-|--------|------|-----------|
-| `POST` | `/api/auth/register` | Cadastro de usuario |
-| `POST` | `/api/auth/login` | Login e receber token JWT |
-
-</details>
-
-<details>
-<summary><b>📂 Categorias</b></summary>
-
-| Metodo | Rota | Descricao |
-|--------|------|-----------|
-| `GET` | `/api/categories` | Listar categorias |
-| `GET` | `/api/categories/{id}` | Buscar categoria |
-| `POST` | `/api/categories` | Criar categoria |
-| `PUT` | `/api/categories/{id}` | Atualizar categoria |
-| `DELETE` | `/api/categories/{id}` | Deletar categoria |
+| Method | Route | Description |
+|--------|-------|-------------|
+| `POST` | `/api/auth/register` | Register new user |
+| `POST` | `/api/auth/login` | Login and receive JWT token |
 
 </details>
 
 <details>
-<summary><b>📦 Itens</b></summary>
+<summary><b>📂 Categories</b></summary>
 
-| Metodo | Rota | Descricao |
-|--------|------|-----------|
-| `GET` | `/api/items` | Listar meus itens |
-| `GET` | `/api/items/all` | Todos os disponiveis |
-| `GET` | `/api/items/{id}` | Buscar item |
-| `GET` | `/api/items/category/{id}` | Filtrar por categoria |
-| `GET` | `/api/items/city/{city}` | Filtrar por cidade |
-| `POST` | `/api/items` | Criar item |
-| `PUT` | `/api/items/{id}` | Atualizar item |
-| `PUT` | `/api/items/{id}/unavailable` | Marcar indisponivel |
-| `DELETE` | `/api/items/{id}` | Deletar item |
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `/api/categories` | List categories |
+| `GET` | `/api/categories/{id}` | Get category by ID |
+| `POST` | `/api/categories` | Create category |
+| `PUT` | `/api/categories/{id}` | Update category |
+| `DELETE` | `/api/categories/{id}` | Delete category |
 
 </details>
 
 <details>
-<summary><b>🤝 Pedidos de Doacao</b></summary>
+<summary><b>📦 Items</b></summary>
 
-| Metodo | Rota | Descricao |
-|--------|------|-----------|
-| `GET` | `/api/donation-requests` | Pedidos recebidos |
-| `GET` | `/api/donation-requests/sent` | Pedidos enviados |
-| `GET` | `/api/donation-requests/{id}` | Buscar pedido |
-| `POST` | `/api/donation-requests` | Criar pedido |
-| `PUT` | `/api/donation-requests/{id}/accept` | Aceitar pedido |
-| `PUT` | `/api/donation-requests/{id}/reject` | Rejeitar pedido |
-| `PUT` | `/api/donation-requests/{id}/complete` | Concluir doacao |
-| `DELETE` | `/api/donation-requests/{id}` | Deletar pedido |
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `/api/items` | List my items |
+| `GET` | `/api/items/all` | All available items |
+| `GET` | `/api/items/{id}` | Get item by ID |
+| `GET` | `/api/items/category/{id}` | Filter by category |
+| `GET` | `/api/items/city/{city}` | Filter by city |
+| `POST` | `/api/items` | Create item |
+| `PUT` | `/api/items/{id}` | Update item |
+| `PUT` | `/api/items/{id}/unavailable` | Mark as unavailable |
+| `DELETE` | `/api/items/{id}` | Delete item |
+
+</details>
+
+<details>
+<summary><b>🤝 Donation Requests</b></summary>
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `/api/donation-requests` | Received requests |
+| `GET` | `/api/donation-requests/sent` | Sent requests |
+| `GET` | `/api/donation-requests/{id}` | Get request by ID |
+| `POST` | `/api/donation-requests` | Create request |
+| `PUT` | `/api/donation-requests/{id}/accept` | Accept request |
+| `PUT` | `/api/donation-requests/{id}/reject` | Reject request |
+| `PUT` | `/api/donation-requests/{id}/complete` | Complete donation |
+| `DELETE` | `/api/donation-requests/{id}` | Delete request |
 
 </details>
 
@@ -262,7 +194,7 @@ Acompanhe cada doacao
 
 <br/>
 
-## Stack Tecnica
+## Tech Stack
 
 <table>
 <tr>
@@ -289,27 +221,27 @@ Acompanhe cada doacao
 
 <br/>
 
-## Rodar Localmente
+## Run Locally
 
 ```bash
-# Clone o repositorio
+# Clone the repository
 git clone https://github.com/jntcode/repassa-backend.git
 cd repassa-backend
 
-# Execute a aplicacao
+# Run the application
 mvn spring-boot:run
 ```
 
-A API estara disponivel em `http://localhost:8080`
+The API will be available at `http://localhost:8080`
 
 H2 Console: `http://localhost:8080/h2-console`
 
 <br/>
 
-### Usuario de teste
+### Test User
 
-| Email | Senha |
-|-------|-------|
+| Email | Password |
+|-------|----------|
 | `admin@repassa.com` | `secret123` |
 
 ---
@@ -320,12 +252,12 @@ H2 Console: `http://localhost:8080/h2-console`
 
 <div align="center">
 
-| Passo | Comando |
-|-------|---------|
+| Step | Command |
+|------|---------|
 | 1. Build Docker | `docker build -t repassa-backend .` |
-| 2. Rodar | `docker run -p 8080:8080 repassa-backend` |
+| 2. Run | `docker run -p 8080:8080 repassa-backend` |
 
-**Ou** conecte o repositorio no **Render** — o deploy e automatico a cada push.
+**Or** connect the repository to **Render** — deploy is automatic on every push.
 
 </div>
 
@@ -333,29 +265,29 @@ H2 Console: `http://localhost:8080/h2-console`
 
 <br/>
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 src/main/java/com/repassa/backend/
 ├── RepassaApplication.java
-├── auth/               # 🔐 Autenticacao + JWT
+├── auth/               # 🔐 Authentication + JWT
 │   ├── User.java
 │   ├── AuthService.java
 │   ├── JwtService.java
 │   └── AuthController.java
-├── category/           # 📂 Categorias
+├── category/           # 📂 Categories
 │   ├── Category.java
 │   ├── CategoryService.java
 │   └── CategoryController.java
-├── item/               # 📦 Itens para doacao
+├── item/               # 📦 Donation items
 │   ├── Item.java
 │   ├── ItemService.java
 │   └── ItemController.java
-├── donationrequest/    # 🤝 Pedidos de doacao
+├── donationrequest/    # 🤝 Donation requests
 │   ├── DonationRequest.java
 │   ├── DonationRequestService.java
 │   └── DonationRequestController.java
-└── security/           # 🔒 Seguranca JWT
+└── security/           # 🔒 JWT Security
     ├── SecurityConfig.java
     └── JwtAuthenticationFilter.java
 ```
@@ -366,7 +298,7 @@ src/main/java/com/repassa/backend/
 
 <div align="center">
 
-### Feito com ❤️ por
+### Built with ❤️ by
 
 **Jhonata Rusaffa**
 
@@ -375,6 +307,6 @@ src/main/java/com/repassa/backend/
 
 <br/>
 
-**RePassa** — Porque toda coisa boa merece ser reaproveitada. ♻️
+**RePassa** — Because every good thing deserves to be reused. ♻️
 
 </div>

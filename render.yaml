@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: repassa-backend
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true

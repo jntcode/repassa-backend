@@ -294,7 +294,7 @@ src/main/java/com/repassa/backend/
 
 <div align="center">
 
-### Built with by
+### Built by
 
 **Jhonata Rusaffa**
 

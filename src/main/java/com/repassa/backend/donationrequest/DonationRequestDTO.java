@@ -13,9 +13,6 @@ public class DonationRequestDTO {
     private Long ownerId;
     private String ownerName;
     private String status;
-    private String type;
-    private Long offeredItemId;
-    private String offeredItemTitle;
     private String message;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -34,11 +31,6 @@ public class DonationRequestDTO {
         dto.setOwnerId(request.getOwner().getId());
         dto.setOwnerName(request.getOwner().getName());
         dto.setStatus(request.getStatus().name());
-        dto.setType(request.getType() != null ? request.getType().name() : DonationRequestType.DONATION.name());
-        if (request.getOfferedItem() != null) {
-            dto.setOfferedItemId(request.getOfferedItem().getId());
-            dto.setOfferedItemTitle(request.getOfferedItem().getTitle());
-        }
         dto.setMessage(request.getMessage());
         dto.setCreatedAt(request.getCreatedAt());
         dto.setUpdatedAt(request.getUpdatedAt());
@@ -115,30 +107,6 @@ public class DonationRequestDTO {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Long getOfferedItemId() {
-        return offeredItemId;
-    }
-
-    public void setOfferedItemId(Long offeredItemId) {
-        this.offeredItemId = offeredItemId;
-    }
-
-    public String getOfferedItemTitle() {
-        return offeredItemTitle;
-    }
-
-    public void setOfferedItemTitle(String offeredItemTitle) {
-        this.offeredItemTitle = offeredItemTitle;
     }
 
     public String getMessage() {

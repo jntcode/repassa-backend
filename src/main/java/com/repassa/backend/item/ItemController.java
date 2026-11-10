@@ -47,17 +47,6 @@ public class ItemController {
         return ResponseEntity.ok(itemService.findByCity(city));
     }
 
-    @GetMapping("/items/search")
-    public ResponseEntity<List<ItemDTO>> searchItems(
-            @RequestParam(required = false) String keyword,
-            @RequestParam(required = false) String city,
-            @RequestParam(required = false) String neighborhood,
-            @RequestParam(required = false) Long categoryId,
-            @RequestParam(required = false) String condition) {
-        return ResponseEntity.ok(
-                itemService.search(keyword, city, neighborhood, categoryId, condition));
-    }
-
     @PostMapping("/items")
     public ResponseEntity<ItemDTO> createItem(@RequestBody ItemDTO dto) {
         return ResponseEntity.ok(itemService.createItem(dto, getCurrentUserId()));

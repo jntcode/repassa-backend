@@ -29,14 +29,6 @@ public class DonationRequest {
     @Enumerated(EnumType.STRING)
     private DonationRequestStatus status = DonationRequestStatus.PENDING;
 
-    @Column(nullable = false, columnDefinition = "varchar(255) default 'DONATION'")
-    @Enumerated(EnumType.STRING)
-    private DonationRequestType type = DonationRequestType.DONATION;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "offered_item_id", nullable = true)
-    private Item offeredItem;
-
     @Column(columnDefinition = "TEXT")
     private String message;
 
@@ -98,22 +90,6 @@ public class DonationRequest {
 
     public void setStatus(DonationRequestStatus status) {
         this.status = status;
-    }
-
-    public DonationRequestType getType() {
-        return type;
-    }
-
-    public void setType(DonationRequestType type) {
-        this.type = type;
-    }
-
-    public Item getOfferedItem() {
-        return offeredItem;
-    }
-
-    public void setOfferedItem(Item offeredItem) {
-        this.offeredItem = offeredItem;
     }
 
     public String getMessage() {

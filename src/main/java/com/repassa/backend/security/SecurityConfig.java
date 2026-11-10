@@ -40,7 +40,8 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/api/categories/**",
                     "/api/items/**",
-                    "/api/donation-requests/**"
+                    "/api/donation-requests/**",
+                    "/api/chat/**"
                 ).authenticated()
                 .anyRequest().authenticated()
             )

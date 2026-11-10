@@ -65,6 +65,26 @@ Clothes, furniture, electronics, books... Items you no longer use can transform 
 
 <br/>
 
+## Use Cases
+
+All use cases from the UML diagram are implemented:
+
+| Use case | Implementation |
+|----------|----------------|
+| Efetuar o cadastro | `POST /api/auth/register` and the Sign Up screen |
+| Adicionar item | `POST /api/items` and the Add screen |
+| Inserir detalhes do item | Item form (title, condition, description, location, category) |
+| Confirmar cadastro do produto | Review/confirmation step before the item is saved |
+| Pesquisar produto | `GET /api/items/search` and the Explore screen |
+| Exibir detalhes do produto | `GET /api/items/{id}` and the item details modal |
+| Trocar produto | `POST /api/donation-requests` with `type: "TRADE"` and an offered item |
+| Solicitar doação ou troca | `POST /api/donation-requests` (donation or trade) |
+| Conversar com anunciante (chat interno) | `/api/chat/**` and the Chats screen |
+
+---
+
+<br/>
+
 ## App Preview
 
 <div align="center">
@@ -122,6 +142,26 @@ Track every donation
 
 </td>
 </tr>
+<tr>
+<td align="center">
+
+### Chat
+Talk to the announcer in real time
+
+</td>
+<td align="center">
+
+### Trade
+Offer an item in exchange
+
+</td>
+<td align="center">
+
+### Confirmation
+Review the item before publishing
+
+</td>
+</tr>
 </table>
 
 ---
@@ -163,10 +203,27 @@ Track every donation
 | `GET` | `/api/items/{id}` | Get item by ID |
 | `GET` | `/api/items/category/{id}` | Filter by category |
 | `GET` | `/api/items/city/{city}` | Filter by city |
+| `GET` | `/api/items/search` | Search by keyword, city, neighborhood, category and condition |
 | `POST` | `/api/items` | Create item |
 | `PUT` | `/api/items/{id}` | Update item |
 | `PUT` | `/api/items/{id}/unavailable` | Mark as unavailable |
 | `DELETE` | `/api/items/{id}` | Delete item |
+
+</details>
+
+<details>
+<summary><b>Chat</b></summary>
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `/api/chat/conversations` | List my conversations |
+| `POST` | `/api/chat/conversations` | Start (or reopen) a conversation about an item |
+| `GET` | `/api/chat/conversations/{id}` | Get conversation by ID |
+| `GET` | `/api/chat/conversations/{id}/messages` | List messages and mark them as read |
+| `POST` | `/api/chat/conversations/{id}/messages` | Send a message |
+| `PUT` | `/api/chat/conversations/{id}/read` | Mark conversation as read |
+
+The chat is always linked to an item, so each conversation happens between the announcer and one interested user.
 
 </details>
 
@@ -183,6 +240,8 @@ Track every donation
 | `PUT` | `/api/donation-requests/{id}/reject` | Reject request |
 | `PUT` | `/api/donation-requests/{id}/complete` | Complete donation |
 | `DELETE` | `/api/donation-requests/{id}` | Delete request |
+
+A request can be a donation (`type: "DONATION"`, default) or a trade (`type: "TRADE"`). For trades, send the ID of one of your own items as `offeredItemId`. Creating a request automatically opens a chat with the announcer.
 
 </details>
 
@@ -239,6 +298,9 @@ H2 Console: `http://localhost:8080/h2-console`
 | Email | Password |
 |-------|----------|
 | `admin@repassa.com` | `secret123` |
+| `maria@repassa.com` | `secret123` |
+
+`maria@repassa.com` already has a few items and a chat conversation, so it is easy to test the chat and trade features.
 
 ---
 
@@ -279,10 +341,15 @@ src/main/java/com/repassa/backend/
 │   ├── Item.java
 │   ├── ItemService.java
 │   └── ItemController.java
-├── donationrequest/      Donation requests
+├── donationrequest/      Donation and trade requests
 │   ├── DonationRequest.java
 │   ├── DonationRequestService.java
 │   └── DonationRequestController.java
+├── chat/                 Internal chat with the announcer
+│   ├── Conversation.java
+│   ├── ChatMessage.java
+│   ├── ChatService.java
+│   └── ChatController.java
 └── security/             JWT Security
     ├── SecurityConfig.java
     └── JwtAuthenticationFilter.java

@@ -51,6 +51,23 @@ public class ItemService {
                 .collect(Collectors.toList());
     }
 
+    public List<ItemDTO> search(String keyword, String city, String neighborhood,
+                                Long categoryId, String condition) {
+        return itemRepository.searchAvailable(
+                        normalize(keyword),
+                        normalize(city),
+                        normalize(neighborhood),
+                        categoryId,
+                        normalize(condition))
+                .stream()
+                .map(ItemDTO::fromEntity)
+                .collect(Collectors.toList());
+    }
+
+    private String normalize(String value) {
+        return value == null || value.isBlank() ? null : value.trim();
+    }
+
     public ItemDTO findById(Long id) {
         Item item = itemRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Item not found"));

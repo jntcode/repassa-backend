@@ -209,6 +209,48 @@
         </main>
     </div>
 
+    <!-- CATEGORIES SCREEN -->
+    <div id="categories-screen" class="screen">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <span class="header-icon">🗂️</span>
+                    <span class="header-title">CATEGORIAS</span>
+                </div>
+                <button class="btn-icon btn-logout" title="Sair">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="search-panel">
+                <div class="input-group">
+                    <label for="category-search">Pesquisar categoria</label>
+                    <input type="text" id="category-search" placeholder="Ex: roupas, livros, móveis...">
+                </div>
+            </div>
+
+            <div class="section-header" id="categories-header">
+                <h3>Categorias disponíveis</h3>
+            </div>
+
+            <div id="categories-grid" class="categories-grid"></div>
+
+            <div id="category-items-panel" style="display: none;">
+                <div class="section-header">
+                    <h3 id="category-items-title"></h3>
+                    <button type="button" class="btn btn-edit" id="btn-back-categories">← Voltar</button>
+                </div>
+                <div id="category-items" class="items-list"></div>
+            </div>
+        </main>
+    </div>
+
     <!-- CHAT SCREEN -->
     <div id="chat-screen" class="screen">
         <header class="app-header">
@@ -251,6 +293,15 @@
                 <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
             <span>Explorar</span>
+        </button>
+        <button class="nav-item" data-tab="categories">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            <span>Categorias</span>
         </button>
         <button class="nav-item" data-tab="add">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
@@ -374,6 +425,7 @@
                 </button>
             </div>
             <div class="detail-actions" id="detail-actions-other" style="display: none;">
+                <button class="btn btn-pickup" id="btn-pickup-detail">🛵 Retirar</button>
                 <button class="btn btn-request" id="btn-request-detail">🎁 Solicitar</button>
                 <button class="btn btn-chat" id="btn-chat-detail">💬 Conversar</button>
             </div>

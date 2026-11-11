@@ -76,7 +76,9 @@ All use cases from the UML diagram are implemented:
 | Inserir detalhes do item | Item form (title, condition, description, location, category) |
 | Confirmar cadastro do produto | Review/confirmation step before the item is saved |
 | Pesquisar produto | `GET /api/items/search` and the Explore screen |
+| Pesquisar/exibir/selecionar categoria (categorias) | Categorias screen: search → category grid → item list → details → pickup ("Retirada") → chat |
 | Exibir detalhes do produto | `GET /api/items/{id}` and the item details modal |
+| Selecionar produto para retirada (retirada) | "🛵 Retirar" button in the details modal, which opens the chat with the announcer |
 | Trocar produto | `POST /api/donation-requests` with `type: "TRADE"` and an offered item |
 | Solicitar doação ou troca | `POST /api/donation-requests` (donation or trade) |
 | Conversar com anunciante (chat interno) | `/api/chat/**` and the Chats screen |

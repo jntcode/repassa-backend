@@ -77,14 +77,16 @@
         register: $('#register-screen'),
         home: $('#home-screen'),
         search: $('#search-screen'),
+        categories: $('#categories-screen'),
         chat: $('#chat-screen')
     };
 
     function showScreen(name) {
         Object.values(screens).forEach(s => s.classList.remove('active'));
         screens[name].classList.add('active');
-        document.body.classList.toggle('authed', name === 'home' || name === 'search' || name === 'chat');
-        if (name === 'home' || name === 'search' || name === 'chat') setActiveTab(name);
+        document.body.classList.toggle('authed',
+            name === 'home' || name === 'search' || name === 'categories' || name === 'chat');
+        if (name === 'home' || name === 'search' || name === 'categories' || name === 'chat') setActiveTab(name);
     }
 
     function setActiveTab(tab) {
@@ -204,6 +206,7 @@
                 showScreen(tab);
                 if (tab === 'home') loadItems();
                 if (tab === 'search') runSearch();
+                if (tab === 'categories') loadCategories();
                 if (tab === 'chat') loadConversations();
             });
         });
@@ -563,6 +566,122 @@
         $('#search-condition').addEventListener('change', runSearch);
     }
 
+    /* ========== CATEGORIES (Fluxo: pesquisar -> exibir -> selecionar -> detalhes -> retirada -> chat) ========== */
+
+    let selectedCategory = null;
+
+    function loadCategories() {
+        const me = DB.getCurrentUser();
+        if (!me) return;
+
+        const query = ($('#category-search').value || '').trim().toLowerCase();
+        const available = DB.getAllItems().filter(i => i.status === 'Available');
+
+        const categories = Object.keys(CATEGORY_LABELS)
+            .filter(key => !query || categoryLabel(key).toLowerCase().includes(query))
+            .map(key => ({
+                key,
+                icon: CATEGORY_ICONS[key] || '📦',
+                label: categoryLabel(key),
+                count: available.filter(i => i.category === key).length
+            }));
+
+        const grid = $('#categories-grid');
+        if (categories.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">🔍</div>
+                    <p>Nenhuma categoria encontrada</p>
+                    <span>Tente outra palavra-chave</span>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = categories.map(cat => `
+            <button type="button" class="category-card" data-category="${cat.key}">
+                <span class="category-card-icon">${cat.icon}</span>
+                <span class="category-card-name">${esc(cat.label)}</span>
+                <span class="category-card-count">${cat.count} item${cat.count === 1 ? '' : 's'}</span>
+            </button>
+        `).join('');
+
+        grid.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => selectCategory(card.dataset.category));
+        });
+    }
+
+    function selectCategory(category) {
+        const me = DB.getCurrentUser();
+        if (!me) return;
+
+        selectedCategory = category;
+        const items = DB.getAllItems()
+            .filter(i => i.category === category && i.status === 'Available')
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        $('#categories-header').style.display = 'none';
+        $('#categories-grid').style.display = 'none';
+        $('#category-items-panel').style.display = 'block';
+        $('#category-items-title').textContent =
+            `${CATEGORY_ICONS[category] || '📦'} ${categoryLabel(category)}`;
+
+        const list = $('#category-items');
+        if (items.length === 0) {
+            list.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <p>Nenhum item nesta categoria</p>
+                    <span>Volte e escolha outra categoria</span>
+                </div>
+            `;
+            return;
+        }
+
+        list.innerHTML = items.map(item => {
+            const icon = CATEGORY_ICONS[item.category] || '📦';
+            const owner = DB.getUser(item.userId);
+            const date = new Date(item.createdAt).toLocaleDateString('pt-BR');
+            return `
+                <div class="item-card status-${item.status}" data-id="${item.id}">
+                    <div class="item-card-header">
+                        <span class="item-card-title">${icon} ${esc(item.title)}</span>
+                        <span class="item-card-status ${item.status}">${esc(statusLabel(item.status))}</span>
+                    </div>
+                    <div class="item-card-info">
+                        <span>📍 ${esc(item.city)}${item.neighborhood ? ', ' + esc(item.neighborhood) : ''}</span>
+                        <span>📅 ${date} · ${esc(conditionLabel(item.condition))}</span>
+                    </div>
+                    <div class="item-card-owner">👤 ${esc(owner ? owner.name : 'Desconhecido')}</div>
+                </div>
+            `;
+        }).join('');
+
+        list.querySelectorAll('.item-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const item = DB.getAllItems().find(i => i.id === card.dataset.id);
+                if (item) openDetail(item);
+            });
+        });
+    }
+
+    function backToCategories() {
+        selectedCategory = null;
+        $('#category-items-panel').style.display = 'none';
+        $('#category-items').innerHTML = '';
+        $('#categories-header').style.display = '';
+        $('#categories-grid').style.display = '';
+        loadCategories();
+    }
+
+    function initCategories() {
+        $('#category-search').addEventListener('input', () => {
+            if (selectedCategory) backToCategories();
+            else loadCategories();
+        });
+        $('#btn-back-categories').addEventListener('click', backToCategories);
+    }
+
     /* ========== REQUESTS (Solicitar doacao ou troca) ========== */
 
     const requestModal = $('#request-modal');
@@ -570,6 +689,10 @@
     function openRequest(item) {
         closeDetail();
         const me = DB.getCurrentUser();
+        if (!me) {
+            showToast('Faça login para solicitar um item', 'error');
+            return;
+        }
         const myItems = DB.getItems(me.id).filter(i => i.status === 'Available');
         const icon = CATEGORY_ICONS[item.category] || '📦';
 
@@ -596,6 +719,10 @@
     function submitRequest(e) {
         e.preventDefault();
         const me = DB.getCurrentUser();
+        if (!me) {
+            showToast('Faça login para solicitar um item', 'error');
+            return;
+        }
         const itemId = $('#request-item-id').value;
         const item = DB.getAllItems().find(i => i.id === itemId);
         if (!item) return;
@@ -669,6 +796,24 @@
             closeDetail();
             openChat(conversation.id);
         });
+
+        // Passo 5 do fluxo de categorias: selecionar produto para retirada.
+        $('#btn-pickup-detail').addEventListener('click', () => {
+            const me = DB.getCurrentUser();
+            if (!me) {
+                showToast('Faça login para retirar um item', 'error');
+                return;
+            }
+            const item = DB.getAllItems().find(i => i.id === detailModal.dataset.id);
+            if (!item) return;
+            const conversation = findOrCreateConversation(item);
+            if (conversationMessages(conversation.id).length === 0) {
+                appendMessage(conversation, 'Olá! Tenho interesse em retirar este item. Quando podemos combinar?');
+            }
+            closeDetail();
+            // Passo 6: o sistema exibe a tela de chat para contato.
+            openChat(conversation.id);
+        });
     }
 
     /* ========== CHAT (Conversar com anunciante) ========== */
@@ -693,6 +838,7 @@
 
     function findOrCreateConversation(item) {
         const me = DB.getCurrentUser();
+        if (!me) return null;
         const conversations = DB.getConversations();
         let conv = conversations.find(c =>
             c.itemId === item.id && c.announcerId === item.userId && c.interestedUserId === me.id);
@@ -719,6 +865,7 @@
 
     function appendMessage(conversation, content) {
         const me = DB.getCurrentUser();
+        if (!me || !conversation) return;
         const messages = DB.getMessages();
         messages.push({
             id: DB.generateId(),
@@ -1082,16 +1229,68 @@
         }
     }
 
+    // Second demo account so the pickup ("retirada") flow can be tried
+    // against items belonging to someone else.
+    function ensureDemoPartner() {
+        const users = DB.getUsers();
+        if (users.find(u => u.email === 'joao@repassa.com')) return;
+
+        const joao = {
+            id: 'demo-partner',
+            name: 'João Pereira',
+            email: 'joao@repassa.com',
+            phone: '(11) 95555-4444',
+            city: 'São Paulo',
+            password: 'secret123',
+            createdAt: new Date().toISOString()
+        };
+        DB.saveUsers([...users, joao]);
+
+        const now = Date.now();
+        const partnerItems = [
+            {
+                id: 'demo-partner-item-0',
+                category: 'Electronics',
+                title: 'Fone de ouvido sem fio',
+                condition: 'Like New',
+                description: 'Fone de ouvido bluetooth com estojo. Pouco uso, bateria ótima.',
+                city: 'São Paulo',
+                neighborhood: 'Moema'
+            },
+            {
+                id: 'demo-partner-item-1',
+                category: 'Kitchen',
+                title: 'Jogo de panelas',
+                condition: 'Good',
+                description: 'Jogo de 5 panelas antiaderentes, todos com tampas.',
+                city: 'São Paulo',
+                neighborhood: 'Moema'
+            }
+        ];
+
+        partnerItems.forEach((data, idx) => {
+            DB.saveItem({
+                ...data,
+                userId: joao.id,
+                status: 'Available',
+                createdAt: new Date(now - (idx + 3) * 86400000).toISOString(),
+                updatedAt: new Date(now - (idx + 3) * 86400000).toISOString()
+            });
+        });
+    }
+
     /* ========== INIT ========== */
 
     function init() {
         seedDemoData();
         localizeDemoData();
+        ensureDemoPartner();
         initAuth();
         initNav();
         initModal();
         initCrud();
         initSearch();
+        initCategories();
         initRequest();
         initChat();
         initProfile();
